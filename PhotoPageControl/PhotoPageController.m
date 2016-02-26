@@ -118,8 +118,16 @@ typedef CATransition * (^TransAnimateBlock)(NSString *type);
     }
     _pageControl.currentPage = _currentPage;
     
+    
+//    [self performSelector:@selector(creatNSTimer) withObject:nil afterDelay:1.5];
+}
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
     [timer invalidate];
-    [self performSelector:@selector(creatNSTimer) withObject:nil afterDelay:1.5];
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [self creatNSTimer];
 }
 
 - (void)showNextPhoto
